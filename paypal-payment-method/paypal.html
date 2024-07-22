@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PayPal Payment Method</title>
+</head>
+<body>
+  <h2>Registration Form</h2>
+    <form id="registrationForm" action="register.php" method="POST">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br><br>
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+        
+        <input type="submit" value="Register">
+    </form>
+
+    <h2>Login Form</h2>
+    <form id="loginForm" action="login.php" method="POST">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br><br>
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+        
+        <input type="submit" value="Login">
+    </form>
+
+    <h2>Payment Info</h2>
+    <form id="paymentForm" action="payment.php" method="POST">
+      <label for="date">Date:</label>
+      <input type="date" name="date" required>
+        <br>
+      <label for="first_name">First Name:</label>
+      <input type="text" name="first_name" placeholder="First Name" required>
+        <br>
+      <label for="last_name">Last Name:</label>
+      <input type="text" name="last_name" placeholder="Last Name" required>
+       <br>
+      <label for="address">Address:</label>
+      <input type="text" name="address" placeholder="Address">
+        <br>
+      <label for="address">City:</label>
+      <input type="text" name="city" placeholder="City">
+        <br>
+      <label for="province">Province:</label>
+      <input type="text" name="province" placeholder="Province" required>
+        <br>
+      <label for="postal_code">Postal Code:</label>
+      <input type="text" name="postal_code" placeholder="Postal Code">
+        <br>
+      <label for="phone_number">Phone Number:</label>
+      <input type="text" name="phone_number" placeholder="Phone Number" required>
+        <br>
+      <label for="email">Email:</label>
+      <input type="email" name="email" placeholder="Email">
+        <br>
+      <input type="submit" value="Pay">
+    </form>
+
+    <!--
+      sql
+
+      //SQL Database 
+
+      //Create Database [reference: https://www.w3schools.com/sql/sql_create_db.asp] 
+      CREATE DATABASE paypal_user_data;
+
+      USE paypal_user_data;
+
+      //make table from using the variables [reference: https://www.w3schools.com/sql/sql_create_table.asp] 
+      CREATE TABLE paypal_user_data (
+        id int AUTO_INCREMENT PRIMARY KEY, [reference: https://www.w3schools.com/sql/sql_autoincrement.asp] 
+        date DATE, [reference: https://www.w3schools.com/sql/sql_dates.asp] 
+        first_name VARCHAR(50),
+        last_name VARCHAR(50),
+        address VARCHAR(255),
+        city VARCHAR(50),
+        province VARCHAR(50),
+        postal_code VARCHAR(50),
+        phone_number VARCHAR(50),
+        email VARCHAR(50)
+      );
+      
+      <?php
+
+      //Need clientId & clientSecret
+      - $clientId = "CLIENT_ID"
+      - $clientSecret = "CLIENT_SECRET";
+
+      // PayPal API
+      use PayPal\Rest\ApiContext
+      use PayPal\Auth\0AuthTokenCredential;
+
+      $api = new ApiContext(
+        new 0AuthTokenCredential(
+          '$clientId',
+          '$clientSecret',
+        )
+        
+      //Process the payment info form to submit
+      if ($SERVER['REQUEST_METHOD'] === 'POST') {
+        //Submitting the information from the form [reference: https://www.w3schools.com/php/php_superglobals_post.asp]
+        $date = $_POST['date'];
+        $firstName = $_POST['first_name'];
+        $lastName = $_POST['last_name'];
+        $address = $_POST['address'];
+        $city = $_POST['city'];
+        $province = $_POST['province'];
+        $postalCode = $_POST['postal_code'];
+        $phoneNumber = $_POST['phone_number'];
+        $email = $_POST['email']
+      }
+
+      //Add a new record & Save the info into the database [reference: https://www.w3schools.com/php/php_mysql_insert.asp]
+      $servername = "localhost";
+      $username = "username";
+      $password = "password";
+      $dbname = "myDB";
+
+      //Create connection
+      $conn = new mysqli($servername, $username, $password, $dbname);
+      //Check the connection
+      if ($conn->connect_error) {
+        die("Connection failed: " .$conn->connect_error); -> exit function
+      }
+
+      $sql = "INSERT INTO paypal_user_data (date, first_name, last_name, address, city, province, postal_code, phone_number, email)"
+      VALUES ('$date', '$first_name', '$last_name', '$address', '$city', '$province', '$postal_code', '$phone_number', '$email');
+
+      if ($conn->query($sql) === TRUE) {
+        echo "User information has been submitted successfully"
+      } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+      }
+
+      $conn->close();
+    } 
+      ?>
+
+    *for test.html, test.php, and save_text.txt
+
+        Create a PayPal Business Account:
+        If you don't have one already, create a PayPal business account. This account will be used to send and receive payments.
+
+    Set Up PayPal SDK:
+        You need to use the PayPal SDK to interact with PayPal's API. Choose an appropriate SDK based on your preferred programming language (e.g., PayPal REST API SDK for PHP).
+
+    Obtain API Credentials:
+        Log in to your PayPal business account and obtain the API credentials (Client ID and Secret) from the Developer section.
+
+    Include PayPal SDK in your Code:
+        Download and include the PayPal SDK in your PHP code. You can usually do this with require or include statements.
+
+    Integrate PayPal Payment Buttons:
+        Add PayPal payment buttons to your form or website. You can create buttons using the PayPal Button API, and each button will have a unique identifier associated with your product or service.
+
+    Handle Payment Callbacks:
+        Set up a callback URL in your PayPal account where PayPal will send information about the transaction after it's completed. Handle these callbacks on your server to update your database or perform any necessary actions.
+
+    Verify and Validate Transactions:
+        When you receive a callback from PayPal, verify the authenticity of the information by checking the transaction details and ensuring they match the expected values.
+
+    Update Your System:
+        Once the payment is verified, update your system's records, mark the order as paid, and perform any other necessary actions.
+
+      <?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Your existing code to save text to file
+    
+    // Now integrate with PayPal
+    require 'path/to/paypal/autoload.php';  // Include PayPal SDK
+    
+    // Replace 'YOUR_CLIENT_ID' and 'YOUR_SECRET' with your actual PayPal credentials
+    $clientId = 'YOUR_CLIENT_ID';
+    $clientSecret = 'YOUR_SECRET';
+    
+    $apiContext = new \PayPal\Rest\ApiContext(
+        new \PayPal\Auth\OAuthTokenCredential($clientId, $clientSecret)
+    );
+
+    // Create a PayPal payment using the details from your form
+    $payment = new \PayPal\Api\Payment();
+    // Set up the payment details (amount, description, etc.)
+    
+    // Execute the payment
+    try {
+        $payment->create($apiContext);  // Replace with actual code to create the payment
+        echo "Payment successful!";
+    } catch (\PayPal\Exception\PayPalConnectionException $e) {
+        echo "Payment failed. Error: " . $e->getMessage();
+    }
+} else {
+    // Redirect back to the form if accessed directly
+    header("Location: test.html");
+    exit;
+}
+?>
+
+    -->
+
+  <div id="paypal-button-container"></div>
+
+  <style>
+    #paypal-button-container {
+      width: 500px;
+          
+      margin: auto;
+      margin-top: 250px;
+    }
+  </style>
+
+  <script src="https://www.paypal.com/sdk/js?client-id=ASCHFZ2X1uWCA7kFuds1ilYhEc_Nj6AfPfVdYqnDpzISuAmb_Gvbcd8_Yu_6xomBloUmesfgsWEJa4VA"></script>
+
+  <script>
+    paypal.Buttons({
+      style: {
+        color: 'white',
+        shape: 'pill',
+      },
+      createOrder: function(data, actions){
+        //This function sets up the details of the transaction, including the amount and line item details
+        return actions.order.create({
+          purchase_units: [{
+            amount: {
+              value: '30.00'
+            }
+          }]
+        });
+      },
+      onApprove:function(data,actions){
+        return actions.order.capture().then(function(details){
+          console.log(details)
+          //showPopup();
+          //document.getElementById("popupContent").innerHTML = getFormData();
+          // //successful payment
+          window.location.replace(alert("Payment successful"))
+        })
+      },
+      //cancel payment
+      onCancel:function(data){
+        window.location.replace(alert("Payment cancelled"))
+      }
+    }).render('#paypal-button-container') // This is a sandbox account, so any transaction that's made is not actually charged.
+
+    //Then do an action once the payment is completed.
+
+    //The Client ID will not be working since it's a sandbox account, so you'll need to make a live account in order to access the information. 
+
+    // Retrieve form data
+    /*    
+    function getFormData() {
+            let firstName = document.getElementById("first_name").value;
+            let lastName = document.getElementById("last_name").value;
+            // Add more fields as needed
+
+            // Construct the message to display in the popup
+            return "First Name: " + firstName + "<br>" +
+                "Last Name: " + lastName;  // Add more fields as needed
+        }
+
+        function showPopup() {
+            // Display the overlay and popup with the user's information
+            document.getElementById("overlay").style.display = "block";
+            document.getElementById("popup").style.display = "block";
+        }
+
+        function closePopup() {
+            // Hide the overlay and popup
+            document.getElementById("overlay").style.display = "none";
+            document.getElementById("popup").style.display = "none";
+        }
+        */
+  </script>
+</body>
+</html>
+
+<!--
+  Steps to integrate PayPal Smart Button
+
+  Step-by-Step:
+1. Go to Developer.PayPal.com
+2. Create your 'Live Client ID'.
+3. Go to PayPal.com
+4. Navigate to: 'Pay & Get Paid' ➜ 'Accept Payments' ➜ 'PayPal Buttons'
+5. Choose 'PayPal Smart Button'
+6. Select type from the dropdown menu:
+- Fixed Price
+- Single-Select List
+- PayPal Donate Button
+7. Fill out payment information
+8. Style your button.
+9. Copy the code.
+10. Embed the code in your website page.
+-->
+
+<!--<?php
+// ... (existing PHP code)
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // ... (existing PHP code)
+
+    // Include PayPal SDK
+    require 'vendor/autoload.php'; // Adjust the path based on your project structure
+
+    // Set up PayPal environment
+    $clientId = 'YOUR_CLIENT_ID';
+    $clientSecret = 'YOUR_CLIENT_SECRET';
+    $environment = new \PayPal\Rest\ApiContext(
+        new \PayPal\Auth\OAuthTokenCredential($clientId, $clientSecret)
+    );
+
+    // ... (continue with the existing PHP code)
+}
+?>
+
+Make sure to replace 'YOUR_CLIENT_ID' and 'YOUR_CLIENT_SECRET' with your actual PayPal client ID and secret.
+
+Process PayPal Payment:
+After writing user data to the file, initiate the PayPal payment process. Update your PHP file as follows:
+
+php
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // ... (existing PHP code)
+
+    // Create a PayPal payment
+    $payment = new \PayPal\Api\Payment();
+    $payment->setIntent('sale');
+    $payer = new \PayPal\Api\Payer();
+    $payer->setPaymentMethod('paypal');
+    $amount = new \PayPal\Api\Amount();
+    $amount->setTotal('1.00'); // Set the total amount here
+    $amount->setCurrency('USD'); // Set the currency code
+    $transaction = new \PayPal\Api\Transaction();
+    $transaction->setAmount($amount);
+    $payment->setPayer($payer);
+    $payment->setTransactions([$transaction]);
+
+    // Redirect the user to PayPal for payment
+    $approvalUrl = $payment->create($environment)->getApprovalLink();
+    header("Location: $approvalUrl");
+    exit;
+}
+
+Adjust the setTotal and setCurrency values based on your payment requirements.
+
+Handle PayPal Callback:
+After the user completes the payment on PayPal, they will be redirected back to your site. You need to handle this callback to capture the payment details and update your system accordingly.
+
+Add the following code after the existing PHP code:
+
+php
+
+    if (isset($_GET['success']) && $_GET['success'] == 'true') {
+        // User completed the payment on PayPal
+
+        // Extract payment details from the URL
+        $paymentId = $_GET['paymentId'];
+        $payerId = $_GET['PayerID'];
+
+        // Get payment details from PayPal
+        $payment = \PayPal\Api\Payment::get($paymentId, $environment);
+        $execute = new \PayPal\Api\PaymentExecution();
+        $execute->setPayerId($payerId);
+
+        try {
+            // Execute the payment
+            $result = $payment->execute($execute, $environment);
+
+            // Process the result as needed
+            // For example, update your database with payment information
+
+            // Redirect the user to a thank-you page
+            header("Location: thank_you.html");
+            exit;
+        } catch (\Exception $ex) {
+            // Handle payment execution failure
+            echo "Payment execution failed: " . $ex->getMessage();
+            exit;
+        }
+    }
+
+    Create a thank_you.html page for users to land on after a successful payment.
+
+Make sure to install the PayPal SDK via Composer (composer require paypal/rest-api-sdk-php) and update the path in the require 'vendor/autoload.php'; line accordingly.
+
+Additionally, remember to secure your PayPal credentials and consider using environment variables or a configuration file for better security practices.
+*/ -->

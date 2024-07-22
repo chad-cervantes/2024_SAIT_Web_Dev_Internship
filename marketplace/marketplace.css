@@ -1,0 +1,623 @@
+*, *::before, *::after {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar {
+  display: flex; 
+  justify-content: space-evenly; 
+  align-items: center; 
+  border-bottom: solid;
+}
+
+.logo {
+  text-align:center
+}
+
+.main-login {
+  display: flex;
+}
+
+.main-login-username-input > input {
+  padding: .8vh; 
+  border: 1px solid; 
+  border-radius: .3vw; 
+  outline: none; 
+  font-size: 2vh; 
+  font-weight: lighter; 
+  color: black; 
+  background-color: white; width: 90%;
+}
+
+.main-login-password-input > input {
+  padding: .8vh; 
+  border: 1px solid; 
+  border-radius: .3vw; 
+  outline: none; 
+  font-size: 2vh; 
+  font-weight: lighter; 
+  color: black; 
+  background-color: white; width: 90%;
+}
+
+.main-login-button {
+  background-color: white; 
+  color: black;
+  border: 1px solid; 
+  border-radius: .5vw; 
+  padding: .5vw 1vw; 
+  cursor: pointer; 
+  font-weight: light; 
+  font-size: 2vh; 
+  outline: none; 
+  height: 4.5vh; 
+  margin-top: 2.5vh; 
+}
+
+.main-login-button:hover {
+  background-color: #f0f0f0;
+  transition: 200ms ease-in-out;
+}
+
+.company-description {
+  display:flex; 
+  justify-content: center; 
+  align-items: center; 
+  margin-top: 3vh; 
+  margin-bottom: 7vh; 
+  gap: 1vw;
+}
+
+.sign-up-form-container {
+  background-color: white; 
+  color: black; 
+  padding: 3vw 2vw; 
+  border: none;
+}
+
+.sign-up-title {
+  text-align: left;
+}
+
+.sign-up-username-input {
+  margin-bottom: 1vh;
+}
+
+.sign-up-username-input > input {
+  padding: .5vh; 
+  border: 1px solid; 
+  border-radius: .3vw; 
+  outline: none; font-size: 2.5vh; 
+  font-weight: lighter; color: black; 
+  background-color: white; 
+  width: 100%;
+}
+
+.sign-up-password-input {
+  margin-bottom: 1vh;
+}
+
+.sign-up-password-input > input {
+  padding: .5vh; 
+  border: 1px solid; 
+  border-radius: .3vw; 
+  outline: none; 
+  font-size: 2.5vh; 
+  font-weight: lighter; 
+  color: black; 
+  background-color: white; 
+  width: 100%; 
+  margin-bottom: 1vh;
+}
+
+.sign-up-button {
+  padding: 1vh; 
+  border: 1px solid; 
+  border-radius: .3vw; 
+  outline: none; 
+  font-size: 2.5vh; 
+  font-weight: lighter; 
+  color: black; 
+  background-color: white; 
+  width: 100%; 
+  cursor: pointer; 
+  margin: auto;
+}
+
+.sign-up-button:hover {
+  background-color: #f0f0f0;
+  transition: 200ms ease-in-out;
+}
+
+.products-title {
+  text-align: center;
+}
+
+.card-grid {
+  display:grid; 
+  grid-template-columns: repeat(auto-fit, minmax(42vh, 1fr));
+  align-items: flex-start ;
+
+  gap: 1rem;
+}
+
+.card {
+  --padding: 1rem;
+  padding: 1rem;
+
+  border: none;
+  border-radius: 1vw;
+
+  background: white;
+
+  /*overflow: hidden;*/
+
+  box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, .5);
+
+  text-align: center;
+}
+
+/* .card-image {
+  padding: 0;
+
+  max-width: 60vw;  
+} */
+
+.card-image {
+  display: block;
+
+  max-width: 80vw;
+  width: 75vw;
+  height: 30vh;
+
+  object-fit: fill;
+  object-position: center;
+
+  aspect-ratio: 16 / 9;
+
+  margin: auto;
+
+  border: solid;
+  border-radius: 1vw;
+}
+
+.card-title {
+  font-size: 3vh; 
+
+  padding: 1rem;
+  padding-bottom: 0;
+  
+  margin-bottom: .25rem;
+}
+
+.card-body {
+  font-size: 2vh;
+
+  padding: 0 1rem;
+}
+
+.card-price {
+  font-size: 3vh;
+
+  padding: 1rem;
+}
+
+.card-footer {
+  padding: 0.052vw;
+  padding-bottom: 0;
+
+  margin-top: 0.052vw;
+}
+
+/* Inputs on Card 2 */
+
+.card-username-input > input {
+  padding: .8vh; 
+  border: 1px solid; 
+  border-radius: .3vw; 
+  outline: none; 
+  font-size: 2vh; 
+  font-weight: lighter; 
+  color: black; 
+  background-color: white; 
+  width: 90%;
+}
+
+.card-password-input > input {
+  padding: .8vh; 
+  border: 1px solid; 
+  border-radius: .3vw; 
+  outline: none; 
+  font-size: 2vh; 
+  font-weight: lighter; 
+  color: black; 
+  background-color: white; 
+  width: 90%;
+}
+
+.add-to-cart-button {
+  background-color: hsl(200, 50%, 50%);
+  color: white;
+
+  border: none;
+  border-radius: .5vw;
+
+  padding: 1vw 1.5vw;
+
+  cursor: pointer;
+}
+
+.add-to-cart-button:hover, .add-to-cart-button:focus {
+  background: hsl(200, 50%, 60%);
+  transition: 200ms ease-in-out;
+}
+
+.info-button {
+  background-color: hsl(128, 46%, 43%);
+  color: white;
+
+  font-size: 1rem;
+  font-weight: bold;
+
+  border: none;
+  border-radius: .5vw;
+
+  padding: 1vw 1.5vw;
+
+  cursor: pointer;
+
+  width: 25vw;
+  height: 5vh;
+}
+
+.info-button:hover, .buy-now-button:focus {
+  background: hsl(128, 66%, 72%);
+  transition: 400ms ease-in;
+  border-radius: 1vw;
+}
+
+.buy-now-button {
+  background-color: hsl(9, 18%, 61%);
+  color: white;
+
+  font-size: 1rem;
+  font-weight: bold;
+
+  border: none;
+  border-radius: .5vw;
+
+  padding: 1vw 1.5vw;
+
+  cursor: pointer;
+
+  width: 25vw;
+  height: 5vh;
+}
+
+.buy-now-button:hover, .buy-now-button:focus {
+  background: hsl(9, 18%, 51%);
+  transition: 400ms ease-in;
+  border-radius: 1vw;
+}
+
+.card-submit-payment-button {
+  background-color: white; 
+  color: black;
+  border: 1px solid; 
+  border-radius: .5vw; 
+  padding: .5vw 1vw; 
+  cursor: pointer; 
+  font-weight: light; 
+  font-size: 2vh; 
+  outline: none; 
+  height: 4.5vh; 
+  margin-top: 2.5vh; 
+}
+
+.card-submit-payment-button:hover {
+  background-color: #f0f0f0;
+  transition: 200ms ease-in-out;
+}
+
+a {
+  text-decoration: none;
+}
+
+
+/* Styles for popup payment form to actually appear*/
+
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.popup-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.popup-outer-container {
+  background-color: hsla(200, 100%, 6%, 0.7); 
+  box-shadow: 0 0 2vw 0 hsl(200, 100%, 6%); 
+  padding: 4vw 3vw; 
+  border: none; border-radius: 3vw; 
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  height: 70vh; 
+  width: 80%; 
+  margin: auto; 
+  margin-top: 2vh; 
+  margin-bottom: 2vh;
+}
+
+.popup-inner-container {
+  background-color: rgba(0,0,0,0.7); 
+  color: white; font-weight: bolder; 
+  height: 60vh; 
+  width: 100%; 
+  border-radius: 2vw; 
+  margin-top: 7vh;
+  margin-bottom: 7vh; 
+  padding: 4vw;
+}
+
+.payment-form {
+  margin-top: 10px;
+}
+
+.payment-form-title {
+  color: white; 
+  text-align: center; 
+  font-size: 4vh; 
+  font-weight: bold;
+}
+
+/* Payment form inputs */
+.first-name-input {
+  float: left; 
+  gap: 1vw; 
+  margin-right: 1vw; 
+  color: white; 
+  width: 50%;
+}
+
+.first-name-input > label {
+  color: white; 
+  font-weight: lighter; 
+  width: 100%; 
+  margin-top: 1vh
+}
+
+.first-name-input > input {
+  padding: .5vh; 
+  border: none; 
+  border-radius: .5vw; 
+  outline: none; 
+  font-size: 2.5vh; 
+  font-weight: lighter; 
+  color: black; 
+  background-color: white; 
+  width: 90%;
+}
+
+.last-name-input {
+  float: right; 
+  gap: 1vw; 
+  margin-top: -6.5vh; 
+  color: white; 
+  width: 50%;
+}
+
+.last-name-input > label {
+  color: white; 
+  font-weight: lighter; 
+  width: 100%;
+}
+
+.last-name-input > input {
+  padding: .5vh; 
+  border: none; 
+  border-radius: .5vw; 
+  outline: none; 
+  font-size: 2.5vh; 
+  font-weight: lighter; 
+  color: black; 
+  background-color: white; 
+  width: 90%;
+}
+
+.address-input {
+  float: left; 
+  gap: 1vw; 
+  margin-top: 1vh;  
+  color: white; 
+  width: 50%;
+} 
+
+.address-input > label {
+  color: white; 
+  font-weight: lighter; 
+  width: auto;
+}
+
+.address-input > input {
+  padding: .5vh; 
+  border: none; 
+  border-radius: .5vw; 
+  outline: none; 
+  font-size: 2.5vh; 
+  font-weight: lighter; 
+  color: black; 
+  background-color: white; 
+  width: 90%;
+}
+
+.city-input {
+  float: right; 
+  gap: 1vw; 
+  margin-top: 1vh; 
+  color: white; 
+  width: 50%;
+}
+
+.city-input > label {
+  color: white; 
+  font-weight: lighter; 
+  width: auto;
+}
+
+.city-input > input {
+  padding: .5vh; 
+  border: none; 
+  border-radius: .5vw; 
+  outline: none; 
+  font-size: 2.5vh; 
+  font-weight: lighter; 
+  color: black; 
+  background-color: white; 
+  width: 90%;
+}
+
+.province-input {
+  float: left; 
+  gap: 1vw; 
+  margin-top: 1vh; 
+  color: white; 
+  width: 50%;
+}
+
+.province-input > label {
+  color: white; 
+  font-weight: lighter; 
+  width: 100%;
+}
+
+.province-input > input {
+  padding: .5vh; 
+  border: none; 
+  border-radius: .5vw; 
+  outline: none; 
+  font-size: 2.5vh; 
+  font-weight: lighter; 
+  color: black; 
+  background-color: white; 
+  width: 90%;
+}
+
+.postal-code-input {
+  float: right; 
+  gap: 1vw; 
+  margin-top: 1vh; 
+  color: white; 
+  width: 50%;
+}
+
+.postal-code-input > label {
+  color: white; 
+  font-weight: lighter; 
+  width: 100%;
+}
+
+.postal-code-input > input {
+  padding: .5vh; 
+  border: none; 
+  border-radius: .5vw; 
+  outline: none; 
+  font-size: 2.5vh; 
+  font-weight: lighter; 
+  color: black; 
+  background-color: white; 
+  width: 90%;
+}
+
+.phone-number-input {
+  float: left; 
+  margin-top: 1vh; 
+  margin-bottom: 1vh; 
+  color: white; 
+  width: 50%;
+}
+
+.phone-number-input > label {
+  color: white; 
+  font-weight: lighter; 
+  width: 100%;
+}
+
+.phone-number-input > input {
+  padding: .5vh; 
+  border: none; 
+  border-radius: .5vw; 
+  outline: none; 
+  font-size: 2.5vh; 
+  font-weight: lighter; 
+  color: black; 
+  background-color: white; 
+  width: 90%;
+}
+
+.email-input {
+  float: right; 
+  margin-top: 1vh;
+  margin-bottom: 1vh; 
+  color: white; 
+  width: 50%;
+}
+
+.email-input > label {
+  color: white; 
+  font-weight: lighter; 
+  width: 100%;
+}
+
+.email-input > input {
+  padding: .5vh; 
+  border: none; 
+  border-radius: .5vw; 
+  outline: none; 
+  font-size: 2.5vh; 
+  font-weight: lighter; 
+  color: white; 
+  color: black; 
+  background-color: white; 
+  width: 90%;
+}
+
+.paypal-button-card-3 {
+  width: 100%; 
+  margin: auto;
+}
+
+input:focus {
+  box-shadow: 0 0 0 .5vh hsl(200, 100%, 50%);
+ }
+
+@media (width > 50rem) {
+  .card-image {
+     width: 20vw;
+     height: 30vh;
+   }
+
+   .info-button, .buy-now-button {
+     width: 10vw;
+     height: auto;
+   }
+}

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anime Creators Marketplace</title>
+  <link rel="stylesheet" href="marketplace.css">
+  <script src="marketplace.js" defer></script>
+  <script src="https://www.paypal.com/sdk/js?client-id=ASCHFZ2X1uWCA7kFuds1ilYhEc_Nj6AfPfVdYqnDpzISuAmb_Gvbcd8_Yu_6xomBloUmesfgsWEJa4VA"></script> 
+</head>
+<body>
+ <!--Website title & Login form-->
+ <div class="navbar">
+  <header>
+    <h1 class="logo">Anime Creators Marketplace</h1>
+  </header>
+    <form method="POST" class="main-login" action="payment-login.php">
+      <!-- Username Input -->
+      <div class="main-login-username-input">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required>
+      </div>
+      <!-- Password Input -->
+      <div class="main-login-password-input">
+        <label for="password">Password</label>
+        <input type="password" id="password2" name="password" required>
+        <!-- Password Visibility Toggle -->
+        <div>
+          <!--<input type="checkbox" onclick="myFunction2()">Show Password-->
+        </div>
+      </div>
+      <!-- Login Button -->
+       <button class="main-login-button" type="submit">
+  	  Login
+       </button>
+    </form>
+ </div>
+ <!--Description & Sign Up form-->
+ <div class="company-description">
+  <div>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
+  </div>
+  <div class="sign-up-form-container">
+   <form method="GET" action="payment-login.php">
+      <h1 class="sign-up-title">Sign Up</h1>
+      <div class="sign-up-username-input">
+        <input type="text" id="username" name="username" placeholder="Username" required>
+      </div>
+      <div class="sign-up-password-input">
+        <input type="password" id="password" name="password" placeholder="Password" required>
+        <!--Password Visibility Toggle-->
+	<div>
+          <input type="checkbox" onclick="myFunction()">Show Password
+        </div>
+      </div>
+      <!--Sign Up Button-->
+      <button class="sign-up-button" type="submit">
+       Sign Up
+      </button>
+   </form>
+  </div>
+ </div>
+  <h1 class="products-title">Products</h1>
+  <!--Card 1-->
+  <div class="card-grid"> 
+   <div class="card">
+    <div class="card-image">
+      <img src="pexels-john-strix-3D-object.jpg">
+    </div>
+    <div class="card-title">
+      Card 1 - 3D Object
+    </div>
+    <div class="card-body">
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis doloremque repudiandae reiciendis eum cumque, dolore qui iusto tempora vel fugit ducimus possimus nemo repellat sequi est consequatur vero nostrum voluptates!
+    </div>
+    <div class="card-price">
+      $1
+    </div>
+    <div class="card-footer">
+      <!--<button class="add-to-cart-button">Add to Cart</button>-->
+      <a href="#">
+        <button class="info-button">Info</button>
+      </a>
+      <a href="#" id="buy-now-link">
+        <button onclick="setSelectedProductPrice(1)" class="buy-now-button">Buy</button>
+      </a>
+      <!-- PayPal button container -->
+      <div id="paypal-button-container"></div>
+    </div>
+  </div>
+  <!--Card 2: Digital Product-->
+  <div class="card">
+     <img class="card-image" src="https://animecreators.synology.me/directory/content/alex's/books/comic/Comic.png">
+  <div class="card-title">
+    Comic
+  </div>
+  <div class="card-body">
+    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis doloremque repudiandae reiciendis eum cumque, dolore qui iusto tempora vel fugit ducimus possimus nemo repellat sequi est consequatur vero nostrum voluptates!
+  </div>
+  <div class="card-price">
+    $0.01
+  </div>
+  <div class="card-footer">
+    <!--<button class="add-to-cart-button">Add to Cart</button>-->
+    <a href="#">
+      <button class="info-button">Info</button>
+    </a> 
+    <a href="#" id="buy-now-link-2">
+      <button onclick="setSelectedProductPrice(0.01)"  class="buy-now-button" id="buy-now-button-card-2">Buy</button>
+    </a>
+    <form method="POST" action="payment-login.php" id="login-form">
+      <h2>Login</h2>
+      <div class="card-username-input">
+        <input type="text" id="username-card-2" name="username-2" placeholder="Username" required>
+      </div>
+      <div class="card-password-input">
+	<input type="password" id="password3-card-2" name="password-2" placeholder="Password" required>
+        <!-- Password Visibility Toggle -->
+        <input type="checkbox" onclick="showPassword()">Show Password
+      </div>
+        <button id="submitCard2Button" class="card-submit-payment-button" type="submit">Submit</button>
+        <!-- PayPal button container -->
+        <div id="paypal-button-popup" class="popup">
+          <div class="popup-content">
+            <button class="close-button" id="closePopup">&times;</button>
+             <!--Timer to redirect user to homepage-->
+             <div id="timer">1:00</div>
+            <div id="paypal-button-container-2" style="width: 95%; margin: auto;"></div>
+          </div>
+        </div>
+      </form>
+     </div>
+    </div>
+    <!--Card 3: Physical Product-->
+    <div class="card">
+      <img class="card-image" src="https://animecreators.synology.me/directory/content/alex's/books/the_bird_and_the_block/The%20block%20of%20wood_001.png">
+    <div class="card-title">
+      Card 3 - Little Bird and The Block
+    </div>
+    <div class="card-body">
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis doloremque repudiandae reiciendis eum cumque, dolore qui iusto tempora vel fugit ducimus possimus nemo repellat sequi est consequatur vero nostrum voluptates!
+    </div>
+    <div class="card-price">
+      $1.75
+    </div>
+    <div class="card-footer">
+      <!--<button class="add-to-cart-button">Add to Cart</button>-->
+      <a href="info-page.html">
+        <button class="info-button">Info</button>
+      </a>
+      <button id="buy-now-button" class="buy-now-button" onclick="setSelectedProductPrice(1.75)">Buy</button>                 
+       <!-- Popup HTML -->
+       <div id="popup-form" class="popup">
+        <div class="popup-content">
+          <button class="close-button" onclick="closePopupForm()">&times;</button>
+            <div class="popup-outer-container">
+              <div class="popup-inner-container">
+                <div class="payment-form">
+                  <h1 class="payment-form-title">Payment Info</h1>
+                  <!--Payment Form-->
+                  <form method="post" action="test.php" onsubmit="showPopup(); return false;">
+		              <!--First Name Input-->
+                    <div class="first-name-input">
+                      <label for="first-name">First Name</label>
+                      <br>
+                      <input type="text" id="first_name" name="first_name" required>
+                    </div>
+               	    <!--Last Name Input-->
+                    <div class="last-name-input">
+                      <label for="last-name">Last Name</label>
+                      <input type="text" id="last_name" name="last_name" required>
+                    </div>
+                   <p>   
+		                <!--Address Input-->
+                    <div class="address-input">
+                      <label for="address">Address</label>
+                      <br>
+                      <input style="padding: .5vh; border: none; border-radius: .5vw; outline: none; font-size: 2.5vh; font-weight: lighter; color: black; background-color: white; width: 90%;" type="text" id="address" name="address" required>
+                    </div>
+             	      <!--City Input-->
+                    <div style="float: right; gap: 1vw; margin-top: 1vh; color: white; width: 50%;">
+                      <label style="color: white; font-weight: lighter; width: auto;">City</label>
+                      <br>
+                      <input style="padding: .5vh; border: none; border-radius: .5vw; outline: none; font-size: 2.5vh; font-weight: lighter; color: black; background-color: white; width: 90%;" type="text" id="city" name="city" required>
+                    </div>
+                   </p>    
+                   <p> 
+		                <!--Province Input--> 
+                    <div class="province-input">
+                      <label for="province">Province</label>
+                      <br>
+                      <input type="text" id="province" name="province" required>         
+                    </div>
+             	    <!--Postal Code Input-->
+                    <div class="postal-code-input">
+                      <label for="postal-code">Postal Code</label>
+                      <br>
+                      <input type="text" id="postal_code" name="postal_code" required>
+                    </div>
+                   </p>      
+                   <p> 
+		                <!--Phone Number Input-->
+                    <div class="phone-number-input">
+                      <label for="phone-number">Phone Number</label>
+                      <br>
+                      <input type="text" id="phone_number" name="phone_number" required>
+                    </div>
+             	    <!--Email Input-->
+                    <div class="email-input">
+                      <label for="email">Email</label>
+                      <br>
+                      <input type="text" id="email" name="email" required>
+                    </div>
+                   </p>      		
+                   <!-- PayPal button -->
+                   <div class="paypal-button-card-3" id="paypal-button-container-3"></div>
+                  </form>
+                 </div>
+                </div>
+              </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!--Card 4-->
+   <div class="card">
+    <div class="card-image">
+      <img src="pexels-john-strix-3D-object.jpg">
+    </div>
+      <div class="card-title">
+	Card 4 - 3D Object
+      </div>
+    <div class="card-body">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis doloremque repudiandae reiciendis eum cumque, dolore qui iusto tempora vel fugit ducimus possimus nemo repellat sequi est consequatur vero nostrum voluptates!</div>
+    <div class="card-price">
+      $10
+    </div>
+    <div class="card-footer">
+      <!--<button class="add-to-cart-button">Add to Cart</button>-->
+      <a href="info-page.html" target="_blank" rel="noopener noreferrer">
+        <button class="info-button">Info</button>
+      </a>
+      <button type="submit" value="submit" class="buy-now-button">Buy</button>
+    </div>
+   </div>
+  </div>
+</body>
+</html>

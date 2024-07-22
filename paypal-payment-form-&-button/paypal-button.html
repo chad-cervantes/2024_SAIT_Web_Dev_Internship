@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://www.paypal.com/sdk/js?client-id=ASd-WysZ9tQD7Vw2sBDKIbiquQB8g8t161jK8DAz_X5AH6snmlS2Lrl0VAHbtNv6e7QCbMhb1WcnG-bc&currency=CAD
+"></script> 
+</head>
+<body>
+  <!-- Assume you have some HTML elements representing product prices -->
+<button onclick="setSelectedProductPrice(10)">Product 1 - $10</button>
+<button onclick="setSelectedProductPrice(20)">Product 2 - $20</button>
+
+<!-- PayPal button container -->
+<div id="paypal-button-container"></div>
+
+<script>
+  let selectedProductPrice = 0;
+
+  // Function to set the selected product price
+  function setSelectedProductPrice(price) {
+    selectedProductPrice = price;
+  }
+
+  // PayPal button configuration
+  paypal.Buttons({
+    createOrder: function(data, actions) {
+      // Use the selected product price dynamically
+      return actions.order.create({
+        purchase_units: [{
+          amount: {
+            value: selectedProductPrice.toFixed(2) // Set the amount based on the selected product price
+          }
+        }]
+      });
+    },
+    onApprove: function(data, actions) {
+      // Handle the approval
+    }
+  }).render('#paypal-button-container');
+</script>
+
+</body>
+</html>

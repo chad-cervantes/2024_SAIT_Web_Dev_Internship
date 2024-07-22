@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1 Minute Timer Popup</title>
+<style>
+  #timer {
+    font-size: 24px;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<div id="timer">1:00</div>
+
+<script>
+  // Function to start the timer
+  function startTimer(duration, display) {
+    let timer = duration, minutes, seconds;
+    setInterval(function () {
+      minutes = parseInt(timer / 60, 10);
+      seconds = parseInt(timer % 60, 10);
+
+      minutes = minutes < 10 ? "0" + minutes : minutes;
+      seconds = seconds < 10 ? "0" + seconds : seconds;
+
+      display.textContent = minutes + ":" + seconds;
+
+      if (--timer < 0) {
+        // Redirect after timer ends
+        window.location.href = "your_redirect_url_here";
+      }
+    }, 1000);
+  }
+
+  // Function to start the timer when the page is loaded
+  window.onload = function () {
+    let oneMinute = 60,
+        display = document.querySelector('#timer');
+    startTimer(oneMinute, display);
+  };
+</script>
+
+</body>
+</html>

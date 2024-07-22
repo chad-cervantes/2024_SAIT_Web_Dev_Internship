@@ -1,0 +1,98 @@
+<iframe src=".../cards/product-1-card.html" width="100%" height="600px" frameborder="0"></iframe><iframe src=".../card-transfer-to-other-html-file/product-1-card.html" width="100%" height="600px" frameborder="0"></iframe><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://www.paypal.com/sdk/js?client-id=ASd-WysZ9tQD7Vw2sBDKIbiquQB8g8t161jK8DAz_X5AH6snmlS2Lrl0VAHbtNv6e7QCbMhb1WcnG-bc&currency=CAD
+"></script> 
+  <title>Product 1</title>
+  <style>
+    body {
+      font-size: 2vh;
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    .card {
+      background-color: #fff;
+      
+      margin: 1.3vw;
+      padding: 1.3vw;
+      
+      width: 20vw;
+      
+      border: none;
+      border-radius: 1.3vw;
+
+      box-shadow: 0 0 .3vw 0 rgba(0,0,0,.5);
+    }
+
+    h1 {
+      color: black;
+    }
+
+    p {
+      color:black;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+     <h1>Product 1</h1>
+    <div class="description">
+      <p>Description</p>
+      <ol>
+        <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus minima sit quidem saepe ad dolor delectus sequi laboriosam reiciendis harum ea iste quam, consequatur magnam et quaerat pariatur voluptatum. Maxime?</li>
+        <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugit tempora consequuntur commodi, aliquid velit adipisci enim quos ad fuga natus repellat, praesentium dignissimos dolor eveniet, maxime optio similique distinctio quae.</li>
+      </ol>
+      <div class="card-footer">
+        <!--<button class="add-to-cart-button">Add to Cart</button>-->
+        <a href="#">
+          <button class="info-button">More Info Here</button>
+        </a>
+        <a href="#" id="buy-now-link">
+          <button onclick="setSelectedProductPrice(1)" class="buy-now-button">Buy Now</button>
+        </a>
+        <!-- PayPal button container -->
+        <div id="paypal-button-container"></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Variable to store the selected product price
+    let selectedProductPrice = 0;
+  
+    // Function to set the selected product price
+    function setSelectedProductPrice(price) {
+      selectedProductPrice = price;
+    }
+    // Event listener for the Buy Now button click
+    document.getElementById('buy-now-link').addEventListener('click', function (event) {
+      // Prevent the default link behavior
+      event.preventDefault();
+  
+      // Execute PayPal button click programmatically
+      paypal.Buttons({
+        createOrder: function(data, actions) {
+          // Use the selected product price dynamically
+          return actions.order.create({
+            purchase_units: [{
+              amount: {
+                value: selectedProductPrice.toFixed(1) // Set the amount based on the selected product price
+              }
+            }]
+          });
+        },
+        onApprove: function(data, actions) {
+          // Handle the approval (e.g., redirect to a success page)
+          alert('Transaction approved!');
+        }
+      }).render('#paypal-button-container');
+      // Optionally, you can hide or disable the Buy Now button after the PayPal button is rendered
+      document.getElementById('buy-now-link').style.display = 'none';
+    });
+  </script>
+</body>
+</html>

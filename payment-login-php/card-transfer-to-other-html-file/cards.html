@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <script src="https://www.paypal.com/sdk/js?client-id=ASd-WysZ9tQD7Vw2sBDKIbiquQB8g8t161jK8DAz_X5AH6snmlS2Lrl0VAHbtNv6e7QCbMhb1WcnG-bc&currency=CAD
+"></script> 
+  <title>Main Cards HTML File</title>
+  <style>
+    .popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: hsla(0,0,0,.5);
+    }
+
+    .popup-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #fff;
+    }
+
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 20px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+ 
+    <!-- <div id="product-1-card"></div>
+    <script>
+      // Fetch and include product 1
+      fetch('product-1-card.html')
+      .then(response => response.text())
+      .then(data => {
+      document.getElementById('product-1-card').innerHTML = data;
+      });
+    </script>
+    
+    <div id="product-2-card"></div>
+    <script>
+      // Fetch and include product 2
+      fetch('product-2-card.html')
+      //Extracts the HTML content
+     .then(response => response.text())
+      //Puts extracted HTML content and inserts it into the div
+     .then(data => {
+      document.getElementById('product-2-card').innerHTML = data;
+      });
+    </script>
+    
+    <div id="product-3-card"></div>
+    <script>
+      // Fetch and include product 3
+      fetch('product-3-card.html')
+      .then(response => response.text())
+      .then(data => {
+      document.getElementById('product-3-card').innerHTML = data;
+      });
+    </script> -->
+  
+ 
+  <!--Product 1 card-->
+  <iframe src="product-1-card.html" width="100%" height="600px" frameborder="0"></iframe>
+  <!--Product 2 card-->
+  <iframe src="product-2-card.html" width="100%" height="600px" frameborder="0"></iframe>
+  <!--Product 3 card-->
+  <iframe src="product-3-card.html" width="100%" height="600px" frameborder="0"></iframe>
+  <div>
+    <button class="buy-now-button" id="buy-now-link">Buy Now</button>
+  <!--Popup Form-->
+  <div class="popup" id="popup-form">
+    <div class="popup-content">
+      <span class="close" onclick="closePopupForm()">&times;</span>
+      <h1>Information</h1>
+      <form action="#">
+        <!--Name Input-->
+        <div class="name-input">
+           <label for="name">Name</label>
+           <input type="text" id="name" name="name" required>
+        </div>
+        <!--Email-->
+        <div class="email-input">
+          <label for="email">Email</label>
+          <input type="text" id="email" name="email" required>
+        </div>
+        <!--Phone Number-->
+        <div class="phone-number-input">
+          <label for="phone-number">Phone Number</label>
+          <input type="text" id="phone-number" name="phone-number">
+        </div>
+        <!--Submit Button-->
+        <button class="submit-button" type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+  </div>
+  
+<script>
+  function openPopupForm() {
+    document.getElementById('popup-form').style.display = 'block';
+  }
+
+  document.getElementById('buy-now-link').addEventListener('click', openPopupForm);
+
+  function closePopupForm() {
+    document.getElementById('popup-form').style.display = 'none';
+  }
+  
+ // Variable to store the selected product price
+      let selectedProductPrice = 0;
+  
+      // Function to set the selected product price
+      function setSelectedProductPrice(price) {
+        selectedProductPrice = price;
+      }
+
+  // Define an array of objects, each representing the attributes of an iframe
+/* let productCards = [
+{
+    src: "product-1-card.html",
+    width: "100%",
+    height: "600px",
+    frameborder: "0"
+},
+{
+    src: "product-2-card.html",
+    width: "100%",
+    height: "600px",
+    frameborder: "0"
+},
+{
+    src: "product-3-card.html",
+    width: "100%",
+    height: "600px",
+    frameborder: "0"
+}
+];
+
+// Loop through the array and create an iframe for each product card
+productCards.forEach(function(card) {
+let iframe = document.createElement("iframe");
+iframe.src = card.src;
+iframe.width = card.width;
+iframe.height = card.height;
+iframe.frameborder = card.frameborder;
+
+// Append the iframe to a container element (e.g., body or a specific div)
+document.body.appendChild(iframe);
+}); */
+
+</script>
+</body>
+</html>
